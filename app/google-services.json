@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "1045320969187",
+    "firebase_url": "https://spot-guide-4a8da.firebaseio.com",
+    "project_id": "spot-guide-4a8da",
+    "storage_bucket": "spot-guide-4a8da.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1045320969187:android:e00bbeee1b9b3184f10ed6",
+        "android_client_info": {
+          "package_name": "com.example.spotguide"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "1045320969187-h8dh51dqsgjdk3u6l46vp30hqjjc975d.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.spotguide",
+            "certificate_hash": "bcefd73149bb124862a47155c89ab5ed8098d06d"
+          }
+        },
+        {
+          "client_id": "1045320969187-7pingv5h1vts3ikl1udls7i0860b0nra.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBskYmcCurgft5eLoo_OJ7nSXEIGpxMK9o"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "1045320969187-7pingv5h1vts3ikl1udls7i0860b0nra.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

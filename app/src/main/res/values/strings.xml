@@ -1,0 +1,8 @@
+<resources>
+    <string name="app_name">Spot Guide</string>
+
+    <string name="bar_menu_map">Map</string>
+    <string name="bar_menu_profile">Profile</string>
+
+
+</resources>

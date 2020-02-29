@@ -1,0 +1,28 @@
+<resources>
+    <!-- Default screen margins, per the Android Design guidelines. -->
+    <dimen name="margin_smaller">4dp</dimen>
+    <dimen name="margin_small">8dp</dimen>
+    <dimen name="margin_default">16dp</dimen>
+    <dimen name="margin_middle">24dp</dimen>
+    <dimen name="margin_big">32dp</dimen>
+
+    <!--  Text sizes  -->
+
+    <dimen name="text_size_10">10sp</dimen>
+    <dimen name="text_size_12">12sp</dimen>
+    <dimen name="text_size_14">14sp</dimen>
+    <dimen name="text_size_16">16sp</dimen>
+    <dimen name="text_size_18">18sp</dimen>
+    <dimen name="text_size_20">20sp</dimen>
+    <dimen name="text_size_24">24sp</dimen>
+
+    <!--  Animation durations  -->
+
+    <integer name="fadeDuration">250</integer>
+
+    <dimen name="btn_full_height">48dp</dimen>
+    <dimen name="btn_radius">100dp</dimen>
+
+    <integer name="navigationVerticalDuration">300</integer>
+    <integer name="navigationHorizontalDuration">150</integer>
+</resources>

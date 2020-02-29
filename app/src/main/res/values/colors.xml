@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorPrimary">#007D2D</color>
+    <color name="colorPrimaryDark">#00574B</color>
+    <color name="colorAccent">#007D2D</color>
+
+    <color name="green_semitransparent">#4D007D2D</color>
+
+    <color name="grey">#CDCACA</color>
+    <color name="grey_text">#666666</color>
+    <color name="grey_divider">#E4E4E4</color>
+    <color name="grey_text_light">#717171</color>
+    <color name="grey_border">#CBCBCB</color>
+
+    <color name="blue_enabled">#00295E</color>
+    <color name="blue_disabled">#8000295E</color>
+    <color name="blue_text">#062D5E</color>
+    <color name="blue_border">#08326B</color>
+
+    <color name="transparent">#00000000</color>
+
+    <color name="white">#FFFFFF</color>
+    <color name="whiteTransparent">#7FFFFFFF</color>
+    <color name="black">#000000</color>
+    <color name="red">#FF0000</color>
+
+    <color name="red_dark">#B90120</color>
+
+    <!--    <color name="green_active">#006524</color>-->
+    <color name="colorAccent_deactivated">#80006524</color>
+
+    <color name="grey_disabled">#E5E5E5</color>
+    <color name="btn_grey_text">#8E8E8E</color>
+    <color name="grey_state_unselected">#808080</color>
+
+</resources>
