@@ -3,17 +3,15 @@ package com.example.spotguide.ui
 import android.view.View
 import androidx.recyclerview.widget.RecyclerView
 import com.example.spotguide.R
-import com.example.spotguide.features.spot.Spot
+import kotlinx.android.synthetic.main.item_spot_photo.view.*
 
 sealed class ViewHolders {
 
-    class ContactRow(view: View) : BaseViewHolder<Spot>(view) {
+    class SpotPhoto(view: View) : BaseViewHolder<Int>(view) {
 
-        override val viewResId = R.layout.item_spot
-//        val delete = view.tvDelete
-//        val checkbox = view.chbAdded
-//        val contactName = view.tvContactName
-//        val contactInfo = view.tvContactInfo
+        override val viewResId = R.layout.item_spot_photo
+
+        val photo = view.ivSpotPhoto
     }
 
     abstract class BaseViewHolder<M: Any>(view: View): RecyclerView.ViewHolder(view), IHasViewResId {

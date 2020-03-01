@@ -9,7 +9,7 @@
     <color name="grey">#CDCACA</color>
     <color name="grey_text">#59333333</color>
     <color name="grey_divider">#E4E4E4</color>
-    <color name="grey_text_light">#717171</color>
+    <color name="grey_text_light">#7E8686</color>
     <color name="grey_border">#CBCBCB</color>
 
     <color name="blue_enabled">#00295E</color>
@@ -21,7 +21,7 @@
 
     <color name="white">#FFFFFF</color>
     <color name="whiteTransparent">#7FFFFFFF</color>
-    <color name="black">#000000</color>
+    <color name="black">#333333</color>
     <color name="red">#FF0000</color>
 
     <color name="red_dark">#B90120</color>

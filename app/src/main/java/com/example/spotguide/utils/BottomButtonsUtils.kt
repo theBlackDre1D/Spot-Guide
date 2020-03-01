@@ -1,7 +1,7 @@
 package com.example.spotguide.utils
 
 import android.view.View
-import com.example.spotguide.NamedFun
+import com.example.spotguide.features.main.NamedFun
 import kotlinx.android.synthetic.main.view_bottom_buttons_horizontal.view.*
 
 object BottomButtonsUtils {

@@ -1,19 +1,19 @@
 package com.example.spotguide.features.spot
 
-import android.location.Geocoder
-import com.example.spotguide.NamedFun
 import com.example.spotguide.R
 import com.example.spotguide.core.base.BaseInputFragment
 import com.example.spotguide.core.extension.getFullText
 import com.example.spotguide.core.extension.stringFromRes
 import com.example.spotguide.core.navigation.Navigation
 import com.example.spotguide.features.main.MainFragment
+import com.example.spotguide.features.main.NamedFun
 import com.example.spotguide.features.spot.logic.SpotStates
 import com.example.spotguide.features.spot.logic.SpotViewModel
 import com.example.spotguide.ui.action_bar.ActionBarParams
 import com.example.spotguide.ui.action_bar.Image
 import com.example.spotguide.ui.action_bar.Text
 import com.example.spotguide.utils.BottomButtonsUtils
+import com.example.spotguide.utils.GeoCoderUtils
 import com.example.spotguide.utils.GroundRatingBarUtils
 import com.example.spotguide.utils.StarRatingBarUtils
 import com.google.android.gms.maps.model.LatLng
@@ -30,7 +30,8 @@ class AddNewSpotFragment : BaseInputFragment<AddNewSpotFragment.Param>() {
     )
 
     data class Param(
-        val location: LatLng
+        val latitude: Double,
+        val longitude: Double
     ) : Serializable
 
     override val layoutResId: Int
@@ -72,32 +73,30 @@ class AddNewSpotFragment : BaseInputFragment<AddNewSpotFragment.Param>() {
     }
 
     private fun setupBottomButtons() {
-        val leftFunc = NamedFun(R.string.spot_add_new_cancel.stringFromRes()) { Navigation.pop(activity) }
-        val rightFunc = NamedFun(R.string.spot_add_new_confirm.stringFromRes()) {
-            spotViewModel.addSpot(createSpotInstance())
-        }
+        val leftFunc =
+            NamedFun(R.string.spot_add_new_cancel.stringFromRes()) {
+                Navigation.pop(activity)
+            }
+        val rightFunc =
+            NamedFun(R.string.spot_add_new_confirm.stringFromRes()) {
+                spotViewModel.addSpot(createSpotInstance())
+            }
         BottomButtonsUtils.setupButtons(vBottomButtons, leftFunc, rightFunc)
     }
 
     private fun createSpotInstance(): Spot {
         newSpot = newSpot.copy(
             name = etSpotName.getFullText(),
-            latitude = params!!.location.latitude,
-            longitude = params!!.location.longitude,
+            latitude = params!!.latitude,
+            longitude = params!!.longitude,
             description = etDescription.getFullText()
             )
         return newSpot
     }
 
     private fun getNameFromLocation() {
-        val geocoder = Geocoder(requireContext())
-        val address = geocoder.getFromLocation(params!!.location.latitude, params!!.location.longitude, 1)?.first()
-        address?.let {
-            val addressString = "${it.locality ?: it.subLocality} ${it.premises}, ${it.countryCode}"
-            tvAddress.text = addressString
-        } ?: run {
-            tvAddress.text = R.string.spot_add_new_unknown_location.stringFromRes()
-        }
+        tvAddress.text = GeoCoderUtils.getNameFromLocation(requireContext(),
+            LatLng(params!!.latitude, params!!.longitude))
     }
 
 }

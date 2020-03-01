@@ -21,10 +21,7 @@ import com.google.android.gms.maps.CameraUpdateFactory
 import com.google.android.gms.maps.GoogleMap
 import com.google.android.gms.maps.MapView
 import com.google.android.gms.maps.MapsInitializer
-import com.google.android.gms.maps.model.BitmapDescriptor
-import com.google.android.gms.maps.model.BitmapDescriptorFactory
-import com.google.android.gms.maps.model.LatLng
-import com.google.android.gms.maps.model.MarkerOptions
+import com.google.android.gms.maps.model.*
 import com.nabinbhandari.android.permissions.PermissionHandler
 import com.nabinbhandari.android.permissions.Permissions
 import io.uniflow.androidx.flow.onEvents
@@ -33,7 +30,10 @@ import kotlinx.android.synthetic.main.fragment_map.*
 import org.koin.android.ext.android.inject
 import java.util.*
 
-class MapFragment : BaseFragment(), GoogleMap.OnMapLongClickListener {
+class MapFragment : BaseFragment(),
+    GoogleMap.OnMapLongClickListener,
+    GoogleMap.OnMarkerClickListener
+{
 
     override val layoutResId: Int
         get() = R.layout.fragment_map
@@ -94,7 +94,7 @@ class MapFragment : BaseFragment(), GoogleMap.OnMapLongClickListener {
             lastKnowLocation?.let {
                 Navigation.switchFragments(activity,
                     AddNewSpotFragment(),
-                    AddNewSpotFragment.Param(LatLng(it.latitude, it.longitude)),
+                    AddNewSpotFragment.Param(it.latitude, it.longitude),
                     Navigation.Animation.VERTICAL)
             }
         }
@@ -130,9 +130,9 @@ class MapFragment : BaseFragment(), GoogleMap.OnMapLongClickListener {
             googleMap = map
             setupAddButton()
 //            googleMap?.setOnCameraIdleListener(this)
-//            googleMap?.setOnMarkerClickListener(this)
 //            googleMap?.setOnCameraMoveStartedListener(this)
             googleMap?.setOnMapLongClickListener(this)
+            googleMap?.setOnMarkerClickListener(this)
 
 //            val visibleRegion = googleMap!!.projection.visibleRegion
 //            val boundaries = visibleRegion.latLngBounds
@@ -151,9 +151,15 @@ class MapFragment : BaseFragment(), GoogleMap.OnMapLongClickListener {
         location?.let {
             Navigation.switchFragments(activity,
                 AddNewSpotFragment(),
-                AddNewSpotFragment.Param(it),
+                AddNewSpotFragment.Param(it.latitude, it.longitude),
                 Navigation.Animation.VERTICAL)
         }
+    }
+
+    override fun onMarkerClick(marker: Marker?): Boolean {
+        val sheet = SpotDetailBottomSheetFragment(marker?.tag as Spot)
+        sheet.show(childFragmentManager, "")
+        return true
     }
 
     private fun setMapToLocation(location: LatLng, zoom: Float = 15f) {
@@ -186,7 +192,7 @@ class MapFragment : BaseFragment(), GoogleMap.OnMapLongClickListener {
         lastKnowLocation?.let { this.lastKnowLocation = it }
     }
 
-    private fun createMarkerOnPosition(latLng: LatLng?, entity: Spot? = null) {
+    private fun createMarkerOnPosition(latLng: LatLng?, spot: Spot? = null) {
         latLng?.let {
             val marker = MarkerOptions()
                 .position(LatLng(it.latitude, it.longitude))
@@ -194,7 +200,7 @@ class MapFragment : BaseFragment(), GoogleMap.OnMapLongClickListener {
             val pinIcon = bitmapDescriptorFromVector(R.drawable.ic_pin)
             marker.icon(pinIcon)
             val addedMarker = googleMap?.addMarker(marker)
-            entity.let { addedMarker?.tag = it }
+            spot.let { addedMarker?.tag = it }
         }
     }
 

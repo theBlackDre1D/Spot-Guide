@@ -18,4 +18,8 @@
     <string name="spot_add_new_unknown_location">Unknown location</string>
     <string name="spot_add_new_added">Spot added</string>
 
+    <string name="spot_detail_navigate">Navigate</string>
+    <string name="spot_detail_description">Description</string>
+    <string name="spot_detail_add_review">Add review</string>
+
 </resources>
