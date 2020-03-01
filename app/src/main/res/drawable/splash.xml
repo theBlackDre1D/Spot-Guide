@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layer-list xmlns:android="http://schemas.android.com/apk/res/android" android:opacity="opaque">
+    <item android:drawable="@color/white"/>
+    <item
+        android:gravity="fill_horizontal|center"
+        android:height="230dp"
+        android:bottom="150dp"
+        >
+        <inset
+            android:insetLeft="36dp"
+            android:insetRight="36dp"
+            android:drawable="@drawable/ic_pin_vector"
+            />
+    </item>
+
+    <item
+        android:gravity="fill_horizontal|center"
+        android:top="250dp"
+        android:height="150dp"
+        >
+        <inset
+            android:insetLeft="36dp"
+            android:insetRight="36dp"
+            android:drawable="@drawable/ic_splash_text"
+            />
+    </item>
+
+</layer-list>
