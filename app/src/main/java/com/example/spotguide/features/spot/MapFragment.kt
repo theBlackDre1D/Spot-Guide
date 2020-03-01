@@ -33,7 +33,7 @@ import kotlinx.android.synthetic.main.fragment_map.*
 import org.koin.android.ext.android.inject
 import java.util.*
 
-class MapFragment : BaseFragment() {
+class MapFragment : BaseFragment(), GoogleMap.OnMapLongClickListener {
 
     override val layoutResId: Int
         get() = R.layout.fragment_map
@@ -132,7 +132,7 @@ class MapFragment : BaseFragment() {
 //            googleMap?.setOnCameraIdleListener(this)
 //            googleMap?.setOnMarkerClickListener(this)
 //            googleMap?.setOnCameraMoveStartedListener(this)
-//            googleMap?.setOnMapLongClickListener(this)
+            googleMap?.setOnMapLongClickListener(this)
 
 //            val visibleRegion = googleMap!!.projection.visibleRegion
 //            val boundaries = visibleRegion.latLngBounds
@@ -144,6 +144,15 @@ class MapFragment : BaseFragment() {
                 createMarkerOnPosition(latlng, null)
 //                initialZoom = true
             }
+        }
+    }
+
+    override fun onMapLongClick(location: LatLng?) {
+        location?.let {
+            Navigation.switchFragments(activity,
+                AddNewSpotFragment(),
+                AddNewSpotFragment.Param(it),
+                Navigation.Animation.VERTICAL)
         }
     }
 

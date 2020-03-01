@@ -16,5 +16,6 @@
     <string name="spot_add_new_confirm">Confirm</string>
     <string name="spot_add_new_adding">Adding spot...</string>
     <string name="spot_add_new_unknown_location">Unknown location</string>
+    <string name="spot_add_new_added">Spot added</string>
 
 </resources>

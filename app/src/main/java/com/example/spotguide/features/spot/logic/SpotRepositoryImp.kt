@@ -13,8 +13,8 @@ class SpotRepositoryImp(
     }
 
     override suspend fun addSpot(spot: Spot): SafeResult<Unit> {
-        // TODO
-        return SafeResult.success(Unit)
+        val result = provider.addSpot(spot)
+        return result?.let { SafeResult.success(it) } ?: SafeResult.failure(Exception("Spots loading failure"))
     }
 
 }

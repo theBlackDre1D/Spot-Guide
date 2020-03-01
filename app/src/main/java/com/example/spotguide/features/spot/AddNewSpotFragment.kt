@@ -7,6 +7,7 @@ import com.example.spotguide.core.base.BaseInputFragment
 import com.example.spotguide.core.extension.getFullText
 import com.example.spotguide.core.extension.stringFromRes
 import com.example.spotguide.core.navigation.Navigation
+import com.example.spotguide.features.main.MainFragment
 import com.example.spotguide.features.spot.logic.SpotStates
 import com.example.spotguide.features.spot.logic.SpotViewModel
 import com.example.spotguide.ui.action_bar.ActionBarParams
@@ -43,6 +44,7 @@ class AddNewSpotFragment : BaseInputFragment<AddNewSpotFragment.Param>() {
         onStates(spotViewModel) { state ->
             when (state) {
                 is SpotStates.AddingSpot -> activity.showLoading(state.text)
+                is SpotStates.SpotAdded -> onSpotAdded()
             }
         }
     }
@@ -54,6 +56,15 @@ class AddNewSpotFragment : BaseInputFragment<AddNewSpotFragment.Param>() {
         setupBottomButtons()
         getNameFromLocation()
     }
+
+    // Handling states section START
+
+    private fun onSpotAdded() {
+        showSuccessToast(R.string.spot_add_new_added.stringFromRes())
+        Navigation.popToFragment(MainFragment::class, activity)
+    }
+
+    // Handling states section END
 
     private fun setupRatingBars() {
         GroundRatingBarUtils.setupView(vGroundRatingBar) { newSpot = newSpot.copy(groundRating = it) }

@@ -13,7 +13,7 @@ object GroundRatingBarUtils {
         val emojies = getEmojies(view)
         emojies.forEachIndexed { index, imageView ->
             imageView.setOnClickListener {
-                view.requestLayout()
+//                view.requestLayout()
                 changeRating(emojies, index)
                 afterPick.invoke(index)
             }
@@ -36,6 +36,7 @@ object GroundRatingBarUtils {
                 imageView.layoutParams.height = 30.dp
                 imageView.layoutParams.width = 30.dp
             }
+            imageView.requestLayout()
         }
     }
 
