@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:orientation="horizontal"
+    android:animateLayoutChanges="true"
+    android:gravity="center_vertical">
+
+    <ImageView
+        android:id="@+id/ivSmile1"
+        android:layout_width="30dp"
+        android:layout_height="30dp"
+        android:src="@drawable/emoji_unhappy"
+        android:layout_marginEnd="5dp"
+        />
+
+    <ImageView
+        android:id="@+id/ivSmile2"
+        android:layout_width="30dp"
+        android:layout_height="30dp"
+        android:src="@drawable/emoji_smirking"
+        android:layout_marginEnd="5dp"
+        />
+
+    <ImageView
+        android:id="@+id/ivSmile3"
+        android:layout_width="30dp"
+        android:layout_height="30dp"
+        android:src="@drawable/emoji_neutral"
+        android:layout_marginEnd="5dp"
+        />
+
+    <ImageView
+        android:id="@+id/ivSmile4"
+        android:layout_width="30dp"
+        android:layout_height="30dp"
+        android:src="@drawable/emoji_slighty_smile"
+        android:layout_marginEnd="5dp"
+        />
+
+    <ImageView
+        android:id="@+id/ivSmile5"
+        android:layout_width="30dp"
+        android:layout_height="30dp"
+        android:src="@drawable/emoji_smile"
+        android:layout_marginEnd="5dp"
+        />
+
+</LinearLayout>

@@ -4,5 +4,17 @@
     <string name="bar_menu_map">Map</string>
     <string name="bar_menu_profile">Profile</string>
 
+    <string name="spot_add">Add</string>
+    <string name="spot_add_new_header">Add spot</string>
+    <string name="spot_add_new_category">Category</string>
+    <string name="spot_add_new_choose_category">Choose category</string>
+    <string name="spot_add_new_ground_quality">Ground quality</string>
+    <string name="spot_add_new_photos">Photos</string>
+    <string name="spot_add_new_description">Description</string>
+    <string name="spot_add_new_description_hint">Tell something more about this spot…</string>
+    <string name="spot_add_new_cancel">Cancel</string>
+    <string name="spot_add_new_confirm">Confirm</string>
+    <string name="spot_add_new_adding">Adding spot...</string>
+    <string name="spot_add_new_unknown_location">Unknown location</string>
 
 </resources>

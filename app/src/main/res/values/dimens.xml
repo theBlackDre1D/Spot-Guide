@@ -5,6 +5,7 @@
     <dimen name="margin_default">16dp</dimen>
     <dimen name="margin_middle">24dp</dimen>
     <dimen name="margin_big">32dp</dimen>
+    <dimen name="margin_biggest">48dp</dimen>
 
     <!--  Text sizes  -->
 

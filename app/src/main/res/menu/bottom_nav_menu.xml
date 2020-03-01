@@ -7,7 +7,7 @@
         android:title="@string/bar_menu_map" />
 
     <item
-        android:id="@+id/navigation_beesafe"
+        android:id="@+id/navigation_profile"
         android:icon="@drawable/ic_profile"
         android:title="@string/bar_menu_profile" />
 

@@ -66,6 +66,10 @@ abstract class BaseActivity: AppCompatActivity() {
         if (!backPressHandled) Navigation.pop(this)
     }
 
-    fun showLoading() = vLoading.visibleOrGone(true)
+    fun showLoading(text: String? = null){
+        vLoading.visibleOrGone(true)
+        tvLoadingText.text = text
+        tvLoadingText.visibleOrGone(text != null)
+    }
     fun hideLoading() = vLoading.visibleOrGone(false)
 }

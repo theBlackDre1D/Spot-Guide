@@ -1,11 +1,63 @@
-<resources>
+<resources xmlns:android="http://schemas.android.com/apk/res/android">
 
     <!-- Base application theme. -->
-    <style name="AppTheme" parent="Theme.AppCompat.Light.DarkActionBar">
+    <style name="AppTheme" parent="Theme.MaterialComponents.Light.NoActionBar">
         <!-- Customize your theme here. -->
         <item name="colorPrimary">@color/colorPrimary</item>
         <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
         <item name="colorAccent">@color/colorAccent</item>
+        <item name="android:windowAnimationStyle">@null</item>
+        <item name="materialButtonStyle">@style/AppButton</item>
+    </style>
+
+<!--    <style name="SplashTheme" parent="Theme.MaterialComponents.Light.NoActionBar">-->
+
+<!--        <item name="android:windowBackground">@drawable/splash</item>-->
+<!--        <item name="android:windowTranslucentStatus">true</item>-->
+
+<!--    </style>-->
+
+    <!-- BUTTON -->
+    <!-- <view>.<type>.<background_color>.<border_color>-->
+
+    <style name="AppButton" parent="Widget.MaterialComponents.Button">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:paddingTop">10dp</item>
+        <item name="android:paddingBottom">10dp</item>
+        <item name="android:paddingRight">24dp</item>
+        <item name="android:paddingLeft">24dp</item>
+        <item name="android:textSize">14sp</item>
+        <item name="android:lines">1</item>
+        <item name="cornerRadius">25dp</item>
+    </style>
+
+    <style name="Button.Outlined" parent="Widget.MaterialComponents.Button.OutlinedButton">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:paddingTop">10dp</item>
+        <item name="android:paddingBottom">10dp</item>
+        <item name="android:paddingRight">24dp</item>
+        <item name="android:paddingLeft">24dp</item>
+        <item name="android:textSize">14sp</item>
+        <item name="android:lines">1</item>
+        <item name="cornerRadius">25dp</item>
+        <item name="strokeColor">@color/colorAccent</item>
+    </style>
+
+    <style name="Button.Full" parent="AppButton">
+        <item name="android:layout_width">match_parent</item>
+
+    </style>
+
+    <style name="Button.Outlined.Full" parent="Button.Outlined">
+        <item name="android:layout_width">match_parent</item>
+        <!--        <item name="strokeWidth">1dp</item>-->
+    </style>
+
+    <style name="Button.Outlined.Middle" parent="Button.Outlined">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="strokeColor">@color/colorAccent</item>
     </style>
 
 </resources>
