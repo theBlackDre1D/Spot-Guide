@@ -9,11 +9,12 @@ object StarRatingBarUtils {
 
     // Public section
 
-    fun setupView(view: View) {
+    fun setupView(view: View, afterPick: (Int) -> Unit) {
         val emojies = getStars(view)
         emojies.forEachIndexed { index, imageView ->
             imageView.setOnClickListener {
                 changeRating(emojies, index)
+                afterPick.invoke(index)
             }
         }
     }

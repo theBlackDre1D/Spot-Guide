@@ -9,12 +9,13 @@ object GroundRatingBarUtils {
 
     // Public section
 
-    fun setupView(view: View) {
+    fun setupView(view: View, afterPick: (Int) -> Unit) {
         val emojies = getEmojies(view)
         emojies.forEachIndexed { index, imageView ->
             imageView.setOnClickListener {
                 view.requestLayout()
                 changeRating(emojies, index)
+                afterPick.invoke(index)
             }
         }
     }

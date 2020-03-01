@@ -4,8 +4,10 @@ import android.location.Geocoder
 import com.example.spotguide.NamedFun
 import com.example.spotguide.R
 import com.example.spotguide.core.base.BaseInputFragment
+import com.example.spotguide.core.extension.getFullText
 import com.example.spotguide.core.extension.stringFromRes
 import com.example.spotguide.core.navigation.Navigation
+import com.example.spotguide.features.spot.logic.SpotStates
 import com.example.spotguide.features.spot.logic.SpotViewModel
 import com.example.spotguide.ui.action_bar.ActionBarParams
 import com.example.spotguide.ui.action_bar.Image
@@ -35,10 +37,12 @@ class AddNewSpotFragment : BaseInputFragment<AddNewSpotFragment.Param>() {
 
     private val spotViewModel: SpotViewModel by inject()
 
+    private var newSpot = Spot()
+
     override fun setViewModelStates() {
         onStates(spotViewModel) { state ->
             when (state) {
-                // TODO
+                is SpotStates.AddingSpot -> activity.showLoading(state.text)
             }
         }
     }
@@ -46,18 +50,14 @@ class AddNewSpotFragment : BaseInputFragment<AddNewSpotFragment.Param>() {
     override fun setViewModelEvents() {}
 
     override fun setupUI() {
-        setupGroundRating()
-        setupStarRating()
+        setupRatingBars()
         setupBottomButtons()
         getNameFromLocation()
     }
 
-    private fun setupGroundRating() {
-        GroundRatingBarUtils.setupView(vGroundRatingBar)
-    }
-
-    private fun setupStarRating() {
-        StarRatingBarUtils.setupView(vStarRatingBar)
+    private fun setupRatingBars() {
+        GroundRatingBarUtils.setupView(vGroundRatingBar) { newSpot = newSpot.copy(groundRating = it) }
+        StarRatingBarUtils.setupView(vStarRatingBar) { newSpot = newSpot.copy(rating = it) }
     }
 
     private fun setupBottomButtons() {
@@ -69,8 +69,13 @@ class AddNewSpotFragment : BaseInputFragment<AddNewSpotFragment.Param>() {
     }
 
     private fun createSpotInstance(): Spot {
-        // TODO
-        return Spot()
+        newSpot = newSpot.copy(
+            name = etSpotName.getFullText(),
+            latitude = params!!.location.latitude,
+            longitude = params!!.location.longitude,
+            description = etDescription.getFullText()
+            )
+        return newSpot
     }
 
     private fun getNameFromLocation() {

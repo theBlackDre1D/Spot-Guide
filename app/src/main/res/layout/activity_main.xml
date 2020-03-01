@@ -38,7 +38,8 @@
         android:layout_height="match_parent"
         android:background="@color/whiteTransparent"
         android:visibility="visible"
-        android:orientation="vertical">
+        android:orientation="vertical"
+        android:gravity="center_vertical">
 
         <com.github.ybq.android.spinkit.SpinKitView
             android:layout_width="60dp"
