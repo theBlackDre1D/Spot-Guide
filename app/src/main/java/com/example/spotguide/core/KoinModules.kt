@@ -1,9 +1,6 @@
 package com.example.spotguide.core
 
-import com.example.spotguide.features.spot.logic.SpotFirestoreProvider
-import com.example.spotguide.features.spot.logic.SpotRepository
-import com.example.spotguide.features.spot.logic.SpotRepositoryImp
-import com.example.spotguide.features.spot.logic.SpotViewModel
+import com.example.spotguide.features.spot.logic.*
 import com.google.firebase.database.FirebaseDatabase
 import com.google.firebase.firestore.FirebaseFirestore
 import com.google.firebase.firestore.FirebaseFirestoreSettings
@@ -17,10 +14,11 @@ val appModules = module {
     viewModel { SpotViewModel( get() ) }
 
     // Repositories
-    single<SpotRepository> { SpotRepositoryImp( get() ) }
+    single<SpotRepository> { SpotRepositoryImp( get(), get() ) }
 
     // Providers
     factory { SpotFirestoreProvider( get(), get() ) }
+    factory { ReviewFirestoreProvider( get(), get() ) }
 
     // Firebase
     single {

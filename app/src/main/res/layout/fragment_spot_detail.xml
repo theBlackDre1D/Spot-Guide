@@ -111,6 +111,15 @@
             app:backgroundTint="@color/colorAccent"
             />
 
+        <com.github.ybq.android.spinkit.SpinKitView
+            android:id="@+id/reviewsLoading"
+            android:layout_width="60dp"
+            android:layout_height="60dp"
+            app:SpinKit_Style="ThreeBounce"
+            android:layout_gravity="center"
+            app:SpinKit_Color="@color/colorAccent"
+            />
+
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/rvReviews"
             android:layout_width="match_parent"

@@ -3,7 +3,7 @@
     <item android:drawable="@color/white"/>
     <item
         android:gravity="fill_horizontal|center"
-        android:height="230dp"
+        android:height="270dp"
         android:bottom="150dp"
         >
         <inset

@@ -12,11 +12,16 @@ sealed class SpotStates : UIState() {
     object SpotsLoading : SpotStates()
     data class AddingSpot(val text: String = R.string.spot_add_new_adding.stringFromRes()) : SpotStates()
     object SpotAdded : SpotStates()
+    data class AddingReview(val text: String = R.string.spot_detail_adding_review.stringFromRes()) : SpotStates()
+    object ReviewAdded : SpotStates()
+    data class ReviewsForSpot(val reviews: List<Review>) : SpotStates()
 }
 
 sealed class SpotEvents : UIEvent() {
     object SpotsLoadingFail : SpotEvents()
     object SpotAddFail : SpotEvents()
+    object AddReviewFail : SpotEvents()
+    object ReviewsForSpotLoadFail : SpotEvents()
 }
 
 class SpotViewModel(
@@ -42,6 +47,23 @@ class SpotViewModel(
             repo.addSpot(spot)
                 .onFailure { sendEvent(SpotEvents.SpotAddFail) }
                 .toStateOrNull { SpotStates.SpotAdded }
+        }
+    }
+
+    fun addReview(review: Review) {
+        setState { SpotStates.AddingReview() }
+        setState {
+            repo.addReview(review)
+                .onFailure { sendEvent(SpotEvents.AddReviewFail) }
+                .toStateOrNull { SpotStates.ReviewAdded }
+        }
+    }
+
+    fun getReviewsForSpot(spotId: String) {
+        setState {
+            repo.getReviewsForSpot(spotId)
+                .onFailure { sendEvent(SpotEvents.ReviewsForSpotLoadFail) }
+                .toStateOrNull { SpotStates.ReviewsForSpot(it) }
         }
     }
 

@@ -21,5 +21,6 @@
     <string name="spot_detail_navigate">Navigate</string>
     <string name="spot_detail_description">Description</string>
     <string name="spot_detail_add_review">Add review</string>
+    <string name="spot_detail_adding_review">Adding review...</string>
 
 </resources>

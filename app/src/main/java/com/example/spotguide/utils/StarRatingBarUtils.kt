@@ -3,6 +3,7 @@ package com.example.spotguide.utils
 import android.view.View
 import android.widget.ImageView
 import com.example.spotguide.R
+import com.example.spotguide.core.extension.dp
 import kotlinx.android.synthetic.main.view_rating_bar.view.*
 
 object StarRatingBarUtils {
@@ -10,12 +11,20 @@ object StarRatingBarUtils {
     // Public section
 
     fun setupView(view: View, afterPick: (Int) -> Unit) {
-        val emojies = getStars(view)
-        emojies.forEachIndexed { index, imageView ->
+        val stars = getStars(view)
+        stars.forEachIndexed { index, imageView ->
             imageView.setOnClickListener {
-                changeRating(emojies, index)
+                changeRating(stars, index)
                 afterPick.invoke(index)
             }
+        }
+    }
+
+    fun setStarsSize(view: View, size: Int) {
+        val stars = getStars(view)
+        stars.forEach {
+            it.layoutParams.width = size.dp
+            it.layoutParams.height = size.dp
         }
     }
 

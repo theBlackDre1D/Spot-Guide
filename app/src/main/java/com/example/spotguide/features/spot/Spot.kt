@@ -4,6 +4,7 @@ import com.example.spotguide.features.main.IHasUploadModel
 import com.google.android.gms.maps.model.LatLng
 
 data class Spot(
+    var id: String? = null,
     val name: String? = null,
     val rating: Int? = null,
     val latitude: Double? = null,

@@ -18,6 +18,9 @@ class SpotFirestoreProvider(
         return try {
             val result = collectionReference.get().await()
             val spots = result.toObjects(Spot::class.java)
+            result.documents.forEachIndexed { index, documentSnapshot ->
+                spots[index].id = documentSnapshot.id
+            }
             spots
         } catch (e: Exception) { null }
     }

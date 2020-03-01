@@ -6,4 +6,6 @@ import io.uniflow.result.SafeResult
 interface SpotRepository {
     suspend fun getAllSpots(): SafeResult<List<Spot>>
     suspend fun addSpot(spot: Spot): SafeResult<Unit>
+    suspend fun addReview(review: Review): SafeResult<Unit>
+    suspend fun getReviewsForSpot(spotId: String): SafeResult<List<Review>>
 }
