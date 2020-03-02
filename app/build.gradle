@@ -87,4 +87,5 @@ dependencies {
     implementation 'com.pixplicity.easyprefs:library:1.9.0'
     implementation 'com.github.andrefrsousa:SuperBottomSheet:1.5.0'
     implementation 'com.azoft.carousellayoutmanager:carousel:1.2.4'
+    implementation 'com.github.Theophrast:SquareImageView:1.0.1'
 }

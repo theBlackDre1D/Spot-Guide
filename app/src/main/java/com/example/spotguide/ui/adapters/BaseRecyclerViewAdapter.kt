@@ -11,7 +11,7 @@ import kotlin.reflect.full.primaryConstructor
 
 open class BaseRecyclerViewAdapter<M: Any, VH: ViewHolders.BaseViewHolder<M>>(
 //    private val viewResId: Int,
-    private var models: MutableList<M>?,
+    private var models: MutableList<M>? = mutableListOf(),
     private val viewHolderClass: KClass<VH>,
     private val bind: (VH, M, Int) -> Unit
 ): RecyclerView.Adapter<VH>() {

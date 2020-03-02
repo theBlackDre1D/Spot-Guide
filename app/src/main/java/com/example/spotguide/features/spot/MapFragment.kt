@@ -13,10 +13,13 @@ import android.view.View
 import androidx.core.content.ContextCompat
 import com.example.spotguide.R
 import com.example.spotguide.core.base.BaseFragment
+import com.example.spotguide.core.extension.stringFromRes
 import com.example.spotguide.core.navigation.Navigation
 import com.example.spotguide.features.spot.logic.SpotEvents
 import com.example.spotguide.features.spot.logic.SpotStates
 import com.example.spotguide.features.spot.logic.SpotViewModel
+import com.example.spotguide.ui.action_bar.ActionBarParams
+import com.example.spotguide.ui.action_bar.Text
 import com.google.android.gms.maps.CameraUpdateFactory
 import com.google.android.gms.maps.GoogleMap
 import com.google.android.gms.maps.MapView
@@ -32,8 +35,11 @@ import java.util.*
 
 class MapFragment : BaseFragment(),
     GoogleMap.OnMapLongClickListener,
-    GoogleMap.OnMarkerClickListener
-{
+    GoogleMap.OnMarkerClickListener {
+
+    override val actionBarParams = ActionBarParams(
+        middleText = Text(R.string.app_name.stringFromRes(), R.color.colorAccent)
+    )
 
     override val layoutResId: Int
         get() = R.layout.fragment_map
@@ -44,6 +50,7 @@ class MapFragment : BaseFragment(),
     private var googleMap: GoogleMap? = null
     private val locationManager: LocationManager by lazy { activity.getSystemService(Context.LOCATION_SERVICE) as LocationManager }
     private var lastKnowLocation: Location? = null
+    private var initialZoom = false
 
     override fun setViewModelStates() {
         onStates(spotViewModel) { state ->
@@ -70,6 +77,7 @@ class MapFragment : BaseFragment(),
     override fun setupUI() {
 
         handlePermissions()
+        setupButtons()
         spotViewModel.getSpots()
     }
 
@@ -89,13 +97,22 @@ class MapFragment : BaseFragment(),
 
     // Handling states section END
 
-    private fun setupAddButton() {
+    private fun setupButtons() {
         bAddSpot.setOnClickListener {
             lastKnowLocation?.let {
                 Navigation.switchFragments(activity,
                     AddNewSpotFragment(),
                     AddNewSpotFragment.Param(it.latitude, it.longitude),
                     Navigation.Animation.VERTICAL)
+            }
+        }
+
+        fabCenterToLocation.setOnClickListener {
+            lastKnowLocation?.let {
+                val latlng = LatLng(it.latitude, it.longitude)
+                val zoom = if (!initialZoom) 15f else googleMap!!.cameraPosition.zoom
+                initialZoom = true
+                setMapToLocation(latlng, zoom)
             }
         }
     }
@@ -128,7 +145,7 @@ class MapFragment : BaseFragment(),
 
         mMapView!!.getMapAsync { map ->
             googleMap = map
-            setupAddButton()
+//            setupButtons()
             googleMap?.setOnMapLongClickListener(this)
             googleMap?.setOnMarkerClickListener(this)
 
@@ -136,7 +153,7 @@ class MapFragment : BaseFragment(),
                 val latlng = LatLng(it.latitude, it.longitude)
                 setMapToLocation(latlng)
                 createMarkerOnPosition(latlng, null)
-//                initialZoom = true
+                initialZoom = true
             }
         }
     }

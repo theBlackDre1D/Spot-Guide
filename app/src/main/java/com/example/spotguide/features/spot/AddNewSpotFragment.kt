@@ -3,15 +3,20 @@ package com.example.spotguide.features.spot
 import com.example.spotguide.R
 import com.example.spotguide.core.base.BaseInputFragment
 import com.example.spotguide.core.extension.getFullText
+import com.example.spotguide.core.extension.loadImageFromImageModel
 import com.example.spotguide.core.extension.stringFromRes
 import com.example.spotguide.core.navigation.Navigation
+import com.example.spotguide.features.galley.GalleryFragment
+import com.example.spotguide.features.galley.logic.ImageModel
 import com.example.spotguide.features.main.MainFragment
 import com.example.spotguide.features.main.NamedFun
 import com.example.spotguide.features.spot.logic.SpotStates
 import com.example.spotguide.features.spot.logic.SpotViewModel
+import com.example.spotguide.ui.ViewHolders
 import com.example.spotguide.ui.action_bar.ActionBarParams
 import com.example.spotguide.ui.action_bar.Image
 import com.example.spotguide.ui.action_bar.Text
+import com.example.spotguide.ui.adapters.BaseRecyclerViewAdapter
 import com.example.spotguide.utils.BottomButtonsUtils
 import com.example.spotguide.utils.GeoCoderUtils
 import com.example.spotguide.utils.GroundRatingBarUtils
@@ -40,6 +45,12 @@ class AddNewSpotFragment : BaseInputFragment<AddNewSpotFragment.Param>() {
     private val spotViewModel: SpotViewModel by inject()
 
     private var newSpot = Spot()
+    private val imagesAdapter: BaseRecyclerViewAdapter<ImageModel, ViewHolders.SpotImageModel> by lazy {
+        BaseRecyclerViewAdapter(
+            viewHolderClass = ViewHolders.SpotImageModel::class,
+            bind = { v, m, p -> bindPhotos(v, m, p) }
+        )
+    }
 
     override fun setViewModelStates() {
         onStates(spotViewModel) { state ->
@@ -56,6 +67,7 @@ class AddNewSpotFragment : BaseInputFragment<AddNewSpotFragment.Param>() {
         setupRatingBars()
         setupBottomButtons()
         getNameFromLocation()
+        setupAddImages()
     }
 
     // Handling states section START
@@ -97,6 +109,24 @@ class AddNewSpotFragment : BaseInputFragment<AddNewSpotFragment.Param>() {
     private fun getNameFromLocation() {
         tvAddress.text = GeoCoderUtils.getNameFromLocation(requireContext(),
             LatLng(params!!.latitude, params!!.longitude))
+    }
+
+    private fun setupAddImages() {
+        ivAddPhotos.setOnClickListener {
+            Navigation.switchFragments(activity,
+                GalleryFragment(),
+                GalleryFragment.Param(::onImagesPick))
+        }
+    }
+
+    private fun onImagesPick(images: List<ImageModel>) {
+        onFragmentLoaded.add(Event {
+            imagesAdapter.addOnlyNewData(images)
+        })
+    }
+
+    private fun bindPhotos(viewHolder: ViewHolders.SpotImageModel, model: ImageModel, position: Int) {
+        viewHolder.photo.loadImageFromImageModel(model)
     }
 
 }

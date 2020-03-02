@@ -1,0 +1,24 @@
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="100dp">
+
+    <com.makeramen.roundedimageview.RoundedImageView
+        android:id="@+id/rivImage"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        app:riv_corner_radius="5dp"
+        android:src="@color/colorAccent"
+        android:scaleType="centerCrop"
+        />
+
+    <View
+        android:id="@+id/vBlur"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/whiteTransparent"
+        android:visibility="gone"
+        />
+
+</FrameLayout>

@@ -2,6 +2,7 @@ package com.example.spotguide.core
 
 import com.example.spotguide.features.galley.logic.ImagesRepository
 import com.example.spotguide.features.galley.logic.ImagesRepositoryImp
+import com.example.spotguide.features.galley.logic.ImagesViewModel
 import com.example.spotguide.features.spot.logic.*
 import com.google.firebase.database.FirebaseDatabase
 import com.google.firebase.firestore.FirebaseFirestore
@@ -14,6 +15,7 @@ val appModules = module {
 
     // ViewModels
     viewModel { SpotViewModel( get() ) }
+    viewModel { ImagesViewModel( get() ) }
 
     // Repositories
     single<SpotRepository> { SpotRepositoryImp( get(), get() ) }

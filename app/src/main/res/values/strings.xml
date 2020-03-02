@@ -27,5 +27,6 @@
     <string name="general_missing_permission">App need this permission for correct behaviour</string>
 
     <string name="gallery_images_loading">Images loading...</string>
+    <string name="gallery_screen_header">Gallery</string>
 
 </resources>

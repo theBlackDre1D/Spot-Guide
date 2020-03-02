@@ -6,6 +6,7 @@ import android.net.Uri
 import android.widget.ImageView
 import androidx.annotation.DrawableRes
 import com.bumptech.glide.Glide
+import com.example.spotguide.features.galley.logic.ImageModel
 import com.google.firebase.storage.StorageReference
 
 fun ImageView.loadImageFromFirebase(storageRef: StorageReference, path: String?, placeholder: Int? = null, afterLoad: (() -> Unit)? = null): ImageView {
@@ -50,7 +51,7 @@ fun ImageView.loadImageFromResId(@DrawableRes imageId: Int): ImageView {
     return this
 }
 
-//fun ImageView.loadImageFromImageModel(model: ImageModel?) {
-//    model?.uri?.let { this.loadImageFromUri(it) }
-//        ?: run { this.loadBitmapImage(model?.bitmap) }
-//}
+fun ImageView.loadImageFromImageModel(model: ImageModel?) {
+    model?.uri?.let { this.loadImageFromUri(it) }
+        ?: run { this.loadBitmapImage(model?.bitmap) }
+}

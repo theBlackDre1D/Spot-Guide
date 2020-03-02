@@ -21,6 +21,20 @@
         android:drawableLeft="@drawable/ic_add"
         android:text="@string/spot_add"
         app:cornerRadius="25dp"
+        android:textAllCaps="true"
+        />
+
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/fabCenterToLocation"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintBottom_toTopOf="@id/bAddSpot"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginBottom="@dimen/margin_small"
+        android:layout_marginEnd="@dimen/margin_small"
+        app:backgroundTint="@color/colorAccent"
+        android:src="@drawable/ic_center_location"
+        app:tint="@color/white"
         />
 
 </androidx.constraintlayout.widget.ConstraintLayout >
