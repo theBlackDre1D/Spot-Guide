@@ -102,14 +102,13 @@ class GalleryFragment : BaseInputFragment<GalleryFragment.Param>() {
             else pickedPhotos.add(model)
             bind(viewHolder, model, position)
         }
-        viewHolder.image.layoutParams.height = viewHolder.image.layoutParams.width
-        viewHolder.image.requestLayout()
     }
 
     private fun setupBottomButtons() {
         val left = NamedFun(R.string.spot_add_new_cancel.stringFromRes()) { Navigation.pop(activity) }
         val right = NamedFun(R.string.spot_add_new_confirm.stringFromRes()) {
             params!!.afterPick.invoke(pickedPhotos)
+            Navigation.pop(activity)
         }
         BottomButtonsUtils.setupButtons(vBottomButtons, left, right)
     }

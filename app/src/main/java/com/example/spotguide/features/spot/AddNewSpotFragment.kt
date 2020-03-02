@@ -1,5 +1,8 @@
 package com.example.spotguide.features.spot
 
+import com.azoft.carousellayoutmanager.CarouselLayoutManager
+import com.azoft.carousellayoutmanager.CarouselZoomPostLayoutListener
+import com.azoft.carousellayoutmanager.CenterScrollListener
 import com.example.spotguide.R
 import com.example.spotguide.core.base.BaseInputFragment
 import com.example.spotguide.core.extension.getFullText
@@ -64,6 +67,7 @@ class AddNewSpotFragment : BaseInputFragment<AddNewSpotFragment.Param>() {
     override fun setViewModelEvents() {}
 
     override fun setupUI() {
+        setupImagesRV()
         setupRatingBars()
         setupBottomButtons()
         getNameFromLocation()
@@ -82,6 +86,15 @@ class AddNewSpotFragment : BaseInputFragment<AddNewSpotFragment.Param>() {
     private fun setupRatingBars() {
         GroundRatingBarUtils.setupView(vGroundRatingBar) { newSpot = newSpot.copy(groundRating = it) }
         StarRatingBarUtils.setupView(vStarRatingBar) { newSpot = newSpot.copy(rating = it) }
+    }
+
+    private fun setupImagesRV() {
+        val layoutManager = CarouselLayoutManager(CarouselLayoutManager.HORIZONTAL, false)
+        layoutManager.setPostLayoutListener(CarouselZoomPostLayoutListener())
+        rvPhotos.adapter = imagesAdapter
+        rvPhotos.layoutManager = layoutManager
+        rvPhotos.setHasFixedSize(true)
+        rvPhotos.addOnScrollListener(CenterScrollListener())
     }
 
     private fun setupBottomButtons() {

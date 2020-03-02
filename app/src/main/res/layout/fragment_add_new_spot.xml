@@ -109,6 +109,7 @@
             <!--        RV with carousel effect -->
 
             <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/rvPhotos"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 />

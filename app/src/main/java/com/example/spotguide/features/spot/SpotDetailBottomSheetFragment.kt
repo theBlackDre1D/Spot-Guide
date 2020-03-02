@@ -75,7 +75,6 @@ class SpotDetailBottomSheetFragment(
         rvPhotos.layoutManager = layoutManager
         rvPhotos.setHasFixedSize(true)
         rvPhotos.addOnScrollListener(CenterScrollListener())
-        bAddReview.setOnClickListener { addReviewDialog() }
     }
 
     private fun setupViewModelStatesAndEvents() {
@@ -116,6 +115,7 @@ class SpotDetailBottomSheetFragment(
         }
         tvDescription.text = spot.description
         bNavigate.setOnClickListener { openMaps() }
+        bAddReview.setOnClickListener { addReviewDialog() }
     }
 
     private fun setupReviewsRV() {
