@@ -1,5 +1,7 @@
-# Spot-Guide
+# Spot Guide
   
+**Clean architecture with DI framerork** -> [Koin](https://github.com/InsertKoinIO/koin)  
+**MVVM with Architecture components (View Model + Live Data)** -> [Uniflow🦄](https://github.com/uniflow-kt/uniflow-kt)  
   
 ## Screens
 <p float="center">
