@@ -20,6 +20,7 @@
         android:layout_marginBottom="@dimen/margin_default"
         android:drawableLeft="@drawable/ic_add"
         android:text="@string/spot_add"
+        app:cornerRadius="25dp"
         />
 
 </androidx.constraintlayout.widget.ConstraintLayout >

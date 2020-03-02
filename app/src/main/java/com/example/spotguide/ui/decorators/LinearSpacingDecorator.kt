@@ -1,4 +1,4 @@
-package com.example.map.ui.decorators
+package com.example.spotguide.ui.decorators
 
 import android.graphics.Rect
 import android.view.View

@@ -31,7 +31,7 @@
             android:id="@+id/tvSpotName"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:textSize="36sp"
+            android:textSize="@dimen/text_size_24"
             android:textColor="@color/black"
             android:textStyle="bold"
             android:layout_marginStart="@dimen/margin_default"
@@ -52,6 +52,7 @@
             android:orientation="horizontal">
 
             <com.google.android.material.button.MaterialButton
+                android:id="@+id/bNavigate"
                 style="@style/AppButton"
                 android:layout_marginStart="@dimen/margin_default"
                 android:text="@string/spot_detail_navigate"
@@ -120,10 +121,26 @@
             app:SpinKit_Color="@color/colorAccent"
             />
 
+        <TextView
+            android:id="@+id/tvNoReviews"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/margin_default"
+            android:layout_marginTop="@dimen/margin_default"
+            android:layout_marginEnd="@dimen/margin_default"
+            android:layout_marginBottom="@dimen/margin_default"
+            android:textSize="@dimen/text_size_14"
+            android:textColor="@color/grey_text"
+            android:visibility="visible"
+            android:layout_gravity="center_horizontal"
+            android:text="@string/spot_detail_no_reviews"
+            />
+
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/rvReviews"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_marginBottom="@dimen/margin_default"
             />
         
     </LinearLayout>

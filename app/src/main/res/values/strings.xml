@@ -22,5 +22,10 @@
     <string name="spot_detail_description">Description</string>
     <string name="spot_detail_add_review">Add review</string>
     <string name="spot_detail_adding_review">Adding review...</string>
+    <string name="spot_detail_no_reviews">No reviews</string>
+
+    <string name="general_missing_permission">App need this permission for correct behaviour</string>
+
+    <string name="gallery_images_loading">Images loading...</string>
 
 </resources>

@@ -10,12 +10,12 @@ object StarRatingBarUtils {
 
     // Public section
 
-    fun setupView(view: View, afterPick: (Int) -> Unit) {
+    fun setupView(view: View, afterPick: ((Int) -> Unit)? = null) {
         val stars = getStars(view)
         stars.forEachIndexed { index, imageView ->
             imageView.setOnClickListener {
                 changeRating(stars, index)
-                afterPick.invoke(index)
+                afterPick?.invoke(index)
             }
         }
     }
@@ -26,6 +26,11 @@ object StarRatingBarUtils {
             it.layoutParams.width = size.dp
             it.layoutParams.height = size.dp
         }
+    }
+
+    fun setStarsRating(view: View, rating: Int) {
+        val stars = getStars(view)
+        changeRating(stars, rating - 1)
     }
 
     // Private section

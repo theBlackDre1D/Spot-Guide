@@ -129,14 +129,8 @@ class MapFragment : BaseFragment(),
         mMapView!!.getMapAsync { map ->
             googleMap = map
             setupAddButton()
-//            googleMap?.setOnCameraIdleListener(this)
-//            googleMap?.setOnCameraMoveStartedListener(this)
             googleMap?.setOnMapLongClickListener(this)
             googleMap?.setOnMarkerClickListener(this)
-
-//            val visibleRegion = googleMap!!.projection.visibleRegion
-//            val boundaries = visibleRegion.latLngBounds
-//            eventViewModel.getEvents(boundaries)
 
             lastKnowLocation?.let {
                 val latlng = LatLng(it.latitude, it.longitude)
@@ -157,7 +151,7 @@ class MapFragment : BaseFragment(),
     }
 
     override fun onMarkerClick(marker: Marker?): Boolean {
-        val sheet = SpotDetailBottomSheetFragment(marker?.tag as Spot)
+        val sheet = SpotDetailBottomSheetFragment(marker?.tag as Spot, lastKnowLocation)
         sheet.show(childFragmentManager, "")
         return true
     }
@@ -196,7 +190,6 @@ class MapFragment : BaseFragment(),
         latLng?.let {
             val marker = MarkerOptions()
                 .position(LatLng(it.latitude, it.longitude))
-//            val pinIcon = BitmapDescriptorFactory.fromResource(R.drawable.ic_pin)
             val pinIcon = bitmapDescriptorFromVector(R.drawable.ic_pin)
             marker.icon(pinIcon)
             val addedMarker = googleMap?.addMarker(marker)
