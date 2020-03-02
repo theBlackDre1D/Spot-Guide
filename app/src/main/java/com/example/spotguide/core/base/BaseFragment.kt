@@ -23,6 +23,7 @@ abstract class BaseFragment: Fragment() {
 
     data class Event(val func: () -> Unit)
 
+    // TODO Think of better implementation and API
     val onFragmentLoaded = mutableListOf<Event>()
 
     enum class FragmentState { INIT, RESUMED, LOADED }
